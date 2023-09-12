@@ -22,7 +22,21 @@ var (
 	builtDate, builtBy     string
 )
 
-var semReleaseVersion string = semVer + "+" + goArch + "." + commitHash
+var semReleaseVersion string = semVer +
+	func(pre string, txt string) string {
+		if len(txt) > 0 {
+			return pre + txt
+		} else {
+			return ""
+		}
+	}("+", goArch) +
+	func(pre string, txt string) string {
+		if len(txt) > 0 {
+			return pre + txt
+		} else {
+			return ""
+		}
+	}(".", commitHash)
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
