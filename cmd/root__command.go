@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
@@ -23,7 +22,7 @@ var (
 	builtDate, builtBy     string
 )
 
-var semReleaseVersion string = strings.Join([]string{semVer, strings.Join([]string{goArch, commitHash}, ".")}, "+")
+var semReleaseVersion string = semVer + "+" + goArch + "." + commitHash
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
