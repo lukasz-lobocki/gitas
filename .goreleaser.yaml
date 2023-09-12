@@ -17,11 +17,11 @@ builds:
       - arm64 
     ldflags:
       - -s -w
-      - -X {{.ModulePath}}/main.semVer={{.Summary}} -X {{.ModulePath}}/main.commitHash={{.ShortCommit}}
-      - -X {{.ModulePath}}/main.isGitDirty={{.IsGitDirty}} -X {{.ModulePath}}/main.isSnapshot={{.IsSnapshot}}
-      - -X {{.ModulePath}}/main.goOs={{.Os}} -X {{.ModulePath}}/main.goArch={{.Arch}}
-      - -X {{.ModulePath}}/main.gitUrl={{.GitURL}} -X {{.ModulePath}}/main.builtBranch={{.Branch}}
-      - -X {{.ModulePath}}/main.builtDate={{.Date}} -X {{.ModulePath}}/main.builtBy=goreleaser
+      - -X {{.ModulePath}}/cmd.semVer={{.Summary}} -X {{.ModulePath}}/cmd.commitHash={{.ShortCommit}}
+      - -X {{.ModulePath}}/cmd.isGitDirty={{.IsGitDirty}} -X {{.ModulePath}}/cmd.isSnapshot={{.IsSnapshot}}
+      - -X {{.ModulePath}}/cmd.goOs={{.Os}} -X {{.ModulePath}}/cmd.goArch={{.Arch}}
+      - -X {{.ModulePath}}/cmd.gitUrl={{.GitURL}} -X {{.ModulePath}}/cmd.builtBranch={{.Branch}}
+      - -X {{.ModulePath}}/cmd.builtDate={{.Date}} -X {{.ModulePath}}/cmd.builtBy=goreleaser
 
 archives:
   - format: tar.gz

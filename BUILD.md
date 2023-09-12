@@ -35,7 +35,7 @@ cookiecutter \
 - package_name: **`gitas`**;
 package_short_description: `Multiple git repos management.`
 
-- package_version: `1.3.4`
+- package_version: `0.1.0`
 
 - author_name: `Lukasz Lobocki`;
 open_source_license: `CC0 v1.0 Universal`
@@ -44,4 +44,4 @@ open_source_license: `CC0 v1.0 Universal`
 
 ### on
 
-`2023-09-12 10:23:39 +0200`
+`2023-09-12 07:41:14 +0200`
