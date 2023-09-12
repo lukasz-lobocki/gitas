@@ -1,0 +1,68 @@
+before:
+  hooks:
+    # You may remove this if you don't use go modules.
+    - go mod tidy
+    # you may remove this if you don't need go generate
+    - go generate ./...
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+#      - windows
+#      - darwin
+    goarch:
+      - amd64
+      - arm64 
+    ldflags:
+      - -s -w
+      - -X {{.ModulePath}}/main.semVer={{.Summary}} -X {{.ModulePath}}/main.commitHash={{.ShortCommit}}
+      - -X {{.ModulePath}}/main.isGitDirty={{.IsGitDirty}} -X {{.ModulePath}}/main.isSnapshot={{.IsSnapshot}}
+      - -X {{.ModulePath}}/main.goOs={{.Os}} -X {{.ModulePath}}/main.goArch={{.Arch}}
+      - -X {{.ModulePath}}/main.gitUrl={{.GitURL}} -X {{.ModulePath}}/main.builtBranch={{.Branch}}
+      - -X {{.ModulePath}}/main.builtDate={{.Date}} -X {{.ModulePath}}/main.builtBy=goreleaser
+
+archives:
+  - format: tar.gz
+    # this name template makes the OS and Arch compatible with the results of uname.
+    name_template: >-
+      {{ .ProjectName }}_
+      {{- title .Os }}_
+      {{- if eq .Arch "amd64" }}x86_64
+      {{- else if eq .Arch "386" }}i386
+      {{- else }}{{ .Arch }}{{ end }}
+      {{- if .Arm }}v{{ .Arm }}{{ end }}
+    # use zip for windows archives
+    format_overrides:
+    - goos: windows
+      format: zip
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ incpatch .Version }}-dirty"
+
+changelog:
+  groups:
+    - title: Features
+      regexp: '^.*?feat(\([[:word:]]+\))??!?:.+$'
+      order: 0
+    - title: "Bug fixes"
+      regexp: '^.*?fix(\([[:word:]]+\))??!?:.+$'
+      order: 1
+    - title: Others
+      order: 999
+  sort: asc
+  filters:
+    exclude:
+      - '^chore:'
+
+announce:
+  skip: true
+
+# The lines beneath this are called `modelines`. See `:help modeline`
+# Feel free to remove those if you don't want/use them.
+# yaml-language-server: $schema=https://goreleaser.com/static/schema.json
+# vim: set ts=2 sw=2 tw=0 fo=cnqoj
