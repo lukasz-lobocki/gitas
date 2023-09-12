@@ -35,7 +35,6 @@ Shell main function
 */
 func shellMain(args []string) {
 	var (
-		//cmd      *exec.Cmd // Command to execute
 		cmdArgs  []string // Args of thecommand to execute
 		givenDir string
 		err      error
