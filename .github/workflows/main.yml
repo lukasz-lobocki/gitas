@@ -24,8 +24,9 @@ jobs:
         name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: stable
-          # go-version-file: 'go.mod'
+          # Either one of below 2 lines
+          # go-version: stable
+          go-version-file: 'go.mod'
           check-latest: true
       -
         name: Show version
@@ -37,11 +38,11 @@ jobs:
           # either 'goreleaser' (default) or 'goreleaser-pro'
           distribution: goreleaser
           version: latest
-          args: build --clean
+          args: build --clean --snapshot
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
           # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
       -
-        name: Test				
+        name: Running tests
         run: go test -v .
