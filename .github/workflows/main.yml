@@ -26,7 +26,7 @@ jobs:
         with:
           # Either one of below 2 lines
           # go-version: stable
-          go-version-file: 'go.mod'
+          go-version-file: 'go.mod' # retrieving the exact version used, as declared in go.mod file
           check-latest: true
       -
         name: Show version
@@ -45,4 +45,4 @@ jobs:
           # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
       -
         name: Running tests
-        run: go test -v .
+        run: go test -v ./...
