@@ -21,8 +21,12 @@ jobs:
         name: Set up Go
         uses: actions/setup-go@v4
         with:
-          go-version: '1.21.1'
+          # go-version: '1.21.1'
+          go-version-file: 'go.mod'
           check-latest: true
+      -
+        name: Show version
+        run: go version
       -
         name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v5
@@ -35,3 +39,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           # Your GoReleaser Pro key, if you are using the 'goreleaser-pro' distribution
           # GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
+      -
+        name: Test				
+        run: go test -v .
