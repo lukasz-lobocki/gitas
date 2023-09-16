@@ -18,11 +18,14 @@ jobs:
         with:
           fetch-depth: 0
       -
+        name: Fetching git repo
+        run: git fetch --force --tags
+      -
         name: Set up Go
         uses: actions/setup-go@v4
         with:
-          # go-version: '1.21.1'
-          go-version-file: 'go.mod'
+          go-version: stable
+          # go-version-file: 'go.mod'
           check-latest: true
       -
         name: Show version
