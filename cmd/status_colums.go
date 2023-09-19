@@ -77,7 +77,16 @@ func getColumns() []tColumn {
 			contentAlignMD:  ALIGN_LEFT,
 			contentEscapeMD: true,
 		},
+		tColumn{ // queryRemoteSync
+			isShown:    func(tc tConfig) bool { return tc.showRemoteSyncNeed },
+			title:      func(_ tConfig) string { return "Q" }, // Static title
+			titleColor: color.Underline,
 
+			contentSource:   func(_ tConfig, tr tRepo) string { return parseBool(tr.RemoteSyncNeed, REMOTE_SYNC_NEEDED_SYMBOL) },
+			contentColor:    func(_ tRepo) color.Attribute { return color.FgHiCyan }, // Static color
+			contentAlignMD:  ALIGN_CENTER,
+			contentEscapeMD: false,
+		},
 		tColumn{ // showBranchUpstream
 			isShown:    func(tc tConfig) bool { return tc.showBranchUpstream },
 			title:      func(_ tConfig) string { return "Branch remote" }, // Static title
@@ -216,7 +225,8 @@ func getThisAlignChar() map[int]string {
 Other symbols
 */
 const (
-	DIRTY_SYMBOL     string = "⊛"
-	UNTRACKED_SYMBOL string = "⊗"
-	STASH_SYMBOL     string = "⊜"
+	DIRTY_SYMBOL              string = "⊛"
+	UNTRACKED_SYMBOL          string = "⊗"
+	STASH_SYMBOL              string = "⊜"
+	REMOTE_SYNC_NEEDED_SYMBOL string = "↯"
 )

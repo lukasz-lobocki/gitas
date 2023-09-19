@@ -42,6 +42,7 @@ func init() {
 	statusCmd.Flags().VarP(config.timeFormat, "format", "f", "format time: relative|iso") // Choice
 
 	statusCmd.Flags().BoolVarP(&config.showBranchHead, "branch", "b", false, "branch shown")
+	statusCmd.Flags().BoolVarP(&config.showRemoteSyncNeed, "query", "q", false, "query remote sync")
 	statusCmd.Flags().BoolVarP(&config.showBranchUpstream, "remote", "r", false, "remote shown")
 
 	statusCmd.Flags().BoolVarP(&config.showUrl, "url", "l", false, "url shown")
@@ -76,6 +77,13 @@ func statusMain(args []string) {
 		givenDir = args[0]
 	}
 
+	/* Show branch infos when querying sync need */
+
+	if config.showRemoteSyncNeed {
+		config.showBranchHead = true
+		config.showBranchUpstream = true
+	}
+
 	/* Query all data when emitting json */
 
 	if config.emitFormat.Value == "j" {
@@ -87,6 +95,8 @@ func statusMain(args []string) {
 		config.showUntracked = true
 		config.showStash = true
 		config.timeFormat.Value = "I"
+		config.showRemoteSyncNeed = true
+		config.showRemoteSyncNeed = true
 	}
 
 	/* Get repos under 'givenDir' */

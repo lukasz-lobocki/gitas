@@ -72,16 +72,26 @@ func getReposDictionary(dirName string, config tConfig) ([]tRepo, error) {
 			thisRepo.UniqueName = thisRepo.ShortName
 		}
 
+		thisSpinner.Suffix = " " + thisRepo.ShortName
+
 		/* Get most part of repo's status */
 
 		if err := getRepoStatus(&thisRepo, config); err != nil {
 			return nil, fmt.Errorf("getting repos status failed. %w", err)
 		}
 
+		/* Get remote sync need */
+
+		if config.showRemoteSyncNeed && len(thisRepo.BranchUpstream) > 0 {
+			if err = getRemoteSyncNeed(&thisRepo); err != nil {
+				return nil, fmt.Errorf("getting remote sync need failed. %w", err)
+			}
+		}
+
 		/* Get repo's url */
 
 		if config.showUrl && len(thisRepo.BranchUpstream) > 0 {
-			if thisRepo.OriginUrl, err = getOriginUrl(thisRepo.TopLevelPath); err != nil {
+			if err = getOriginUrl(&thisRepo); err != nil {
 				return nil, fmt.Errorf("getting origin url failed. %w", err)
 			}
 		}
@@ -89,7 +99,7 @@ func getReposDictionary(dirName string, config tConfig) ([]tRepo, error) {
 		/* Get repo's time */
 
 		if config.showCommitTime {
-			if thisRepo.LastCommitTime, err = getLastCommitTime(thisRepo.TopLevelPath, false, config); err != nil {
+			if err = getLastCommitTime(&thisRepo, false, config); err != nil {
 				return nil, fmt.Errorf("getting last commit time failed. %w", err)
 			}
 		}
@@ -97,7 +107,7 @@ func getReposDictionary(dirName string, config tConfig) ([]tRepo, error) {
 		/* Get repo's epoch */
 
 		if config.sortOrder.Value == "t" {
-			if thisRepo.LastCommitEpoch, err = getLastCommitTime(thisRepo.TopLevelPath, true, config); err != nil {
+			if err = getLastCommitTime(&thisRepo, true, config); err != nil {
 				return nil, fmt.Errorf("getting last commit epoch failed. %w", err)
 			}
 		}
