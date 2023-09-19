@@ -10,6 +10,7 @@ type tConfig struct {
 	showUrl            bool
 	showCommitTime     bool
 	showBranchHead     bool
+	showRemoteSyncNeed bool
 	showBranchUpstream bool
 	showDirty          bool
 	showUntracked      bool
