@@ -42,7 +42,7 @@ func init() {
 	statusCmd.Flags().VarP(config.timeFormat, "format", "f", "format time: relative|iso") // Choice
 
 	statusCmd.Flags().BoolVarP(&config.showBranchHead, "branch", "b", false, "branch shown")
-	statusCmd.Flags().BoolVarP(&config.showRemoteSyncNeed, "query", "q", false, "query remote sync")
+	statusCmd.Flags().BoolVarP(&config.showRemoteSyncNeed, "query", "q", false, "query remote sync (implies -br)")
 	statusCmd.Flags().BoolVarP(&config.showBranchUpstream, "remote", "r", false, "remote shown")
 
 	statusCmd.Flags().BoolVarP(&config.showUrl, "url", "l", false, "url shown")
