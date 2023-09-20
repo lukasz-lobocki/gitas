@@ -80,7 +80,7 @@ func getReposDictionary(dirName string, config tConfig) ([]tRepo, error) {
 			return nil, fmt.Errorf("getting repos status failed. %w", err)
 		}
 
-		/* Get remote sync need */
+		/* Get fetch needed */
 
 		if config.showFetchNeeded && len(thisRepo.BranchUpstream) > 0 {
 			if err = getFetchNeeded(&thisRepo); err != nil {
