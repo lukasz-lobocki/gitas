@@ -96,7 +96,6 @@ func statusMain(args []string) {
 		config.showStash = true
 		config.timeFormat.Value = "I"
 		config.showFetchNeeded = true
-		config.showFetchNeeded = true
 	}
 
 	/* Get repos under 'givenDir' */
