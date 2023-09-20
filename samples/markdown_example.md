@@ -1,6 +1,6 @@
-| Short | Last commit | Branch head | Branch remote | Url | P | D | U | S |
-| :- | :- | :- | :- | :- | :-: | :-: | :-: | :-: |
-| gits | 2 minutes ago | new\-scr | origin/new\-scr | https://github.com/lukasz-lobocki/gits.git | ✓ |  |  |  |
-| termshot | 10 hours ago | JetBrains\-font |  |  |  | ⊛ | ⊗ |  |
-| tabby | 12 days ago | main | origin/main | https://github.com/lukasz-lobocki/tabby.git | ✓ |  |  |  |
-| append\-xxhsum | 5 weeks ago | main | origin/main | ssh@https://github.com/lukasz-lobocki/append-xxhsum | ↘ | ⊛ |  | ⊜ |
+| Unique name | Last commit | Branch head | Q | Branch remote | Url | ⇅ | D | U | S |
+| :- | :- | :- | :-: | :- | :- | :-: | :-: | :-: | :-: |
+| gitas | 13 hours ago | main |  | origin/main | ssh@https://github.com/lukasz-lobocki/gitas | ✓ | ⊛ |  |  |
+| append\-xxhsum | 10 days ago | main |  | origin/main | ssh@https://github.com/lukasz-lobocki/append-xxhsum | ✓ |  |  |  |
+| tabby | 10 days ago | main |  | origin/main | https://github.com/lukasz-lobocki/tabby.git | ✓ |  |  |  |
+| termshot | 11 days ago | main |  | origin/main | https://github.com/lukasz-lobocki/termshot.git | ✓ |  |  |  |

@@ -34,7 +34,7 @@ See also [markdown](samples/markdown_example.md) and [json](samples/json_example
   -t, --time           time of last commit shown (default true)
   -f, --format {r|i}   format time: relative|iso (default r)
   -b, --branch         branch shown
-  -q, --query          query remote sync (implies -br)
+  -q, --query          query fetch needed (implies -br)
   -r, --remote         remote shown
   -l, --url            url shown
   -d, --dirty          dirty shown (default true)

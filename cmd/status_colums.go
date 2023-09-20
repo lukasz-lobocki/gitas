@@ -38,7 +38,7 @@ func getColumns() []tColumn {
 				}
 				return ""
 			},
-			titleColor: color.Underline,
+			titleColor: color.Bold,
 
 			contentSource: func(tc tConfig, tr tRepo) string {
 				switch tc.nameShown.Value { // Content differs by config
@@ -59,7 +59,7 @@ func getColumns() []tColumn {
 		tColumn{ // showCommitTime
 			isShown:    func(tc tConfig) bool { return tc.showCommitTime },
 			title:      func(_ tConfig) string { return "Last commit" }, // Static title
-			titleColor: color.Underline,
+			titleColor: color.Bold,
 
 			contentSource:   func(_ tConfig, tr tRepo) string { return tr.LastCommitTime },
 			contentColor:    func(_ tRepo) color.Attribute { return color.FgHiBlack }, // Static color
@@ -70,19 +70,19 @@ func getColumns() []tColumn {
 		tColumn{ // showBranchHead
 			isShown:    func(tc tConfig) bool { return tc.showBranchHead },
 			title:      func(_ tConfig) string { return "Branch head" }, // Static title
-			titleColor: color.Underline,
+			titleColor: color.Bold,
 
 			contentSource:   func(_ tConfig, tr tRepo) string { return tr.BranchHead },
 			contentColor:    func(_ tRepo) color.Attribute { return color.FgHiBlue }, // Static color
 			contentAlignMD:  ALIGN_LEFT,
 			contentEscapeMD: true,
 		},
-		tColumn{ // queryRemoteSync
-			isShown:    func(tc tConfig) bool { return tc.showRemoteSyncNeed },
+		tColumn{ // showFetchNeeded
+			isShown:    func(tc tConfig) bool { return tc.showFetchNeeded },
 			title:      func(_ tConfig) string { return "Q" }, // Static title
-			titleColor: color.Underline,
+			titleColor: color.Bold,
 
-			contentSource:   func(_ tConfig, tr tRepo) string { return parseBool(tr.RemoteSyncNeed, REMOTE_SYNC_NEEDED_SYMBOL) },
+			contentSource:   func(_ tConfig, tr tRepo) string { return parseBool(tr.FetchNeeded, REMOTE_SYNC_NEEDED_SYMBOL) },
 			contentColor:    func(_ tRepo) color.Attribute { return color.FgHiCyan }, // Static color
 			contentAlignMD:  ALIGN_CENTER,
 			contentEscapeMD: false,
@@ -90,7 +90,7 @@ func getColumns() []tColumn {
 		tColumn{ // showBranchUpstream
 			isShown:    func(tc tConfig) bool { return tc.showBranchUpstream },
 			title:      func(_ tConfig) string { return "Branch remote" }, // Static title
-			titleColor: color.Underline,
+			titleColor: color.Bold,
 
 			contentSource:   func(_ tConfig, tr tRepo) string { return tr.BranchUpstream },
 			contentColor:    func(_ tRepo) color.Attribute { return color.FgHiBlue }, // Static color
@@ -101,7 +101,7 @@ func getColumns() []tColumn {
 		tColumn{ // showUrl
 			isShown:    func(tc tConfig) bool { return tc.showUrl },
 			title:      func(_ tConfig) string { return "Url" }, // Static title
-			titleColor: color.Underline,
+			titleColor: color.Bold,
 
 			contentSource: func(_ tConfig, tr tRepo) string {
 				return strings.ReplaceAll(
@@ -114,9 +114,9 @@ func getColumns() []tColumn {
 		},
 
 		tColumn{ // Ahead / behind
-			isShown:    func(tc tConfig) bool { return true }, // Always shown
-			title:      func(_ tConfig) string { return "P" }, // Static title
-			titleColor: color.Underline,
+			isShown:    func(tc tConfig) bool { return true },               // Always shown
+			title:      func(_ tConfig) string { return PUSH_FETCH_SYMBOL }, // Static title
+			titleColor: color.Bold,
 
 			contentSource:   func(_ tConfig, tr tRepo) string { return getThisABSymbol()[tr.StatusAB] },
 			contentColor:    func(tr tRepo) color.Attribute { return getThisABColor()[tr.StatusAB] }, // Dynamic color
@@ -127,7 +127,7 @@ func getColumns() []tColumn {
 		tColumn{ // showDirty
 			isShown:    func(tc tConfig) bool { return tc.showDirty },
 			title:      func(_ tConfig) string { return "D" }, // Static title
-			titleColor: color.Underline,
+			titleColor: color.Bold,
 
 			contentSource:   func(_ tConfig, tr tRepo) string { return parseBool(tr.Dirty, DIRTY_SYMBOL) },
 			contentColor:    func(_ tRepo) color.Attribute { return color.FgCyan }, // Static color
@@ -138,7 +138,7 @@ func getColumns() []tColumn {
 		tColumn{ // showUntracked
 			isShown:    func(tc tConfig) bool { return tc.showUntracked },
 			title:      func(_ tConfig) string { return "U" }, // Static title
-			titleColor: color.Underline,
+			titleColor: color.Bold,
 
 			contentSource:   func(_ tConfig, tr tRepo) string { return parseBool(tr.Untracked, UNTRACKED_SYMBOL) },
 			contentColor:    func(_ tRepo) color.Attribute { return color.FgRed }, // Static color
@@ -150,7 +150,7 @@ func getColumns() []tColumn {
 			isShown: func(tc tConfig) bool { return tc.showStash },
 			title:   func(_ tConfig) string { return "S" }, // Static title
 
-			titleColor:      color.Underline,
+			titleColor:      color.Bold,
 			contentSource:   func(_ tConfig, tr tRepo) string { return parseBool(tr.Stash, STASH_SYMBOL) },
 			contentColor:    func(_ tRepo) color.Attribute { return color.FgYellow }, // Static color
 			contentAlignMD:  ALIGN_CENTER,
@@ -171,11 +171,12 @@ const (
 	REMOTE_AHEAD_SYMBOL string = "↘"
 	LOCAL_AHEAD_SYMBOL  string = "↗"
 	DIVERGED_SYMBOL     string = "↹"
+	PUSH_FETCH_SYMBOL   string = "⇅"
 )
 
 const (
 	SYNCED_CHAR       string = "synced"
-	REMOTE_AHEAD_CHAR string = "ready for pull"
+	REMOTE_AHEAD_CHAR string = "ready for merge"
 	LOCAL_AHEAD_CHAR  string = "ready for push"
 	DIVERGED_CHAR     string = "diverged"
 )
@@ -228,5 +229,5 @@ const (
 	DIRTY_SYMBOL              string = "⊛"
 	UNTRACKED_SYMBOL          string = "⊗"
 	STASH_SYMBOL              string = "⊜"
-	REMOTE_SYNC_NEEDED_SYMBOL string = "↯"
+	REMOTE_SYNC_NEEDED_SYMBOL string = "↯" // Ready for fetch
 )

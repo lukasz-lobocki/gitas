@@ -10,7 +10,7 @@ type tRepo struct {
 	LastCommitTime  string `json:"lastCommitTime"`  // Human-readable
 	LastCommitEpoch string `json:"lastCommitEpoch"` // For sorting purposes
 	BranchHead      string `json:"branchHead"`
-	RemoteSyncNeed  bool   `json:"remoteSyncNeed"`
+	FetchNeeded     bool   `json:"fetchNeeded"`
 	BranchUpstream  string `json:"branchUpstream"`
 	Ahead           int    `json:"ahead"`
 	Behind          int    `json:"behind"`

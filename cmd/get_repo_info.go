@@ -9,11 +9,11 @@ import (
 )
 
 /*
-getRemoteSyncNeed returns if local needs sync with remote
+getFetchNeeded returns if local needs sync with remote
 
 	'thisRepo' structure (passed by refereferce) that contains initial data and to be populated
 */
-func getRemoteSyncNeed(thisRepo *tRepo) error {
+func getFetchNeeded(thisRepo *tRepo) error {
 
 	commCommand := "git"
 	repoUpstream := getStringRegex(`(.*)\/`, thisRepo.BranchUpstream) //name before '/'
@@ -34,7 +34,7 @@ func getRemoteSyncNeed(thisRepo *tRepo) error {
 
 	/* Construct boolean information */
 
-	thisRepo.RemoteSyncNeed = !regexp.MustCompile(
+	thisRepo.FetchNeeded = !regexp.MustCompile(
 		`(?mU)^\s*` +
 			thisRepo.BranchHead +
 			`\s*pushes to [[:print:]]*\s*\(` + UP_TO_DATE + `\)$`).
@@ -176,10 +176,10 @@ func getRepoStatus(thisRepo *tRepo, config tConfig) error {
 
 	/* Construct branch information */
 
-	if config.showBranchHead || config.showRemoteSyncNeed {
+	if config.showBranchHead || config.showFetchNeeded {
 		thisRepo.BranchHead = getStringRegex(`(?mU)^# branch.head (.+)$`, cmdOutput)
 	}
-	if config.showBranchUpstream || config.showUrl || config.showRemoteSyncNeed {
+	if config.showBranchUpstream || config.showUrl || config.showFetchNeeded {
 		thisRepo.BranchUpstream = getStringRegex(`(?mU)^# branch.upstream (.+)$`, cmdOutput)
 	}
 

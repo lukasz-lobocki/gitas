@@ -82,8 +82,8 @@ func getReposDictionary(dirName string, config tConfig) ([]tRepo, error) {
 
 		/* Get remote sync need */
 
-		if config.showRemoteSyncNeed && len(thisRepo.BranchUpstream) > 0 {
-			if err = getRemoteSyncNeed(&thisRepo); err != nil {
+		if config.showFetchNeeded && len(thisRepo.BranchUpstream) > 0 {
+			if err = getFetchNeeded(&thisRepo); err != nil {
 				return nil, fmt.Errorf("getting remote sync need failed. %w", err)
 			}
 		}
