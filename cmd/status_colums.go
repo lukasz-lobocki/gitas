@@ -82,7 +82,7 @@ func getColumns() []tColumn {
 			title:      func(_ tConfig) string { return "Q" }, // Static title
 			titleColor: color.Bold,
 
-			contentSource:   func(_ tConfig, tr tRepo) string { return parseBool(tr.FetchNeeded, REMOTE_SYNC_NEEDED_SYMBOL) },
+			contentSource:   func(_ tConfig, tr tRepo) string { return parseBool(tr.FetchNeeded, FETCH_NEEDED_SYMBOL) },
 			contentColor:    func(_ tRepo) color.Attribute { return color.FgHiCyan }, // Static color
 			contentAlignMD:  ALIGN_CENTER,
 			contentEscapeMD: false,
@@ -226,8 +226,8 @@ func getThisAlignChar() map[int]string {
 Other symbols
 */
 const (
-	DIRTY_SYMBOL              string = "⊛"
-	UNTRACKED_SYMBOL          string = "⊗"
-	STASH_SYMBOL              string = "⊜"
-	REMOTE_SYNC_NEEDED_SYMBOL string = "↯" // Ready for fetch
+	DIRTY_SYMBOL        string = "⊛"
+	UNTRACKED_SYMBOL    string = "⊗"
+	STASH_SYMBOL        string = "⊜"
+	FETCH_NEEDED_SYMBOL string = "↯" // Ready for fetch
 )
