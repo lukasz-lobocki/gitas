@@ -7,7 +7,7 @@ This tool has two features:
 
 Unlike [gita](https://github.com/nosarthur/gita), it does not require maintenance of repositiories' list. It works on all repos found recursively in the given path.
 
-Additionally, issuing `status` command with `-q` flag makes gitas query the remote for sync status. This reveals the need for `git fetch`. _This flag requires network connection and may be time consuming._
+Additionally, issuing `gitas status` command with `-q` flag makes gitas query the remote for sync status. This reveals the need for `git fetch`. _This flag requires network connection and may be time consuming._
 
 ## gitas status
 
