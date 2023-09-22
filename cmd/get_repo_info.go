@@ -16,7 +16,7 @@ getFetchNeeded returns if local needs sync with remote
 func getFetchNeeded(thisRepo *tRepo) error {
 
 	commCommand := "git"
-	repoUpstream := getStringRegex(`(.*)\/`, thisRepo.BranchUpstream) //name before '/'
+	repoUpstream := getStringRegex(`(.*)\/`, thisRepo.BranchUpstream) // repo name is before '/'
 	argsRemote := append([]string{},
 		"remote", "show", repoUpstream,
 	)
