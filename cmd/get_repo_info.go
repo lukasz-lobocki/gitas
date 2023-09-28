@@ -203,7 +203,7 @@ getArgsStatus returns git status command arguments
 
 	'config' rules of the construction
 
-Convenience funtion
+Convenience function
 */
 func getArgsStatus(config tConfig) []string {
 	args := append([]string{},

@@ -1,4 +1,10 @@
-# gitas ![Static](https://img.shields.io/badge/myjnia-syfon-brown?style=for-the-badge&labelColor=lightgoldenrodyellow)
+# gitas ![GitHub release (with filter)](https://img.shields.io/github/v/release/lukasz-lobocki/gitas?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/lukasz-lobocki/gitas?style=for-the-badge)
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/lukasz-lobocki/gitas)](https://goreportcard.com/report/github.com/lukasz-lobocki/gitas?style=for-the-badge)
+![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/lukasz-lobocki/gitas/main.yml)
+
+
+
 
 This tool has two features:
 

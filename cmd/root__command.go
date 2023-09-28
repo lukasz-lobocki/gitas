@@ -101,7 +101,7 @@ checkLogginglevel confirms if logging level does not exceed maximum level.
 
 For convenience it also emits some log
 
-	'args' values emited to log
+	'args' values emitted to log
 */
 func checkLogginglevel(args []string) {
 	if loggingLevel > MAX_LOGGING_LEVEL {

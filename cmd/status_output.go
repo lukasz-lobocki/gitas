@@ -165,7 +165,7 @@ func emitMarkdown(repos []tRepo) {
 		}
 	}
 
-	/* Emiting titles */
+	/* Emitting titles */
 
 	fmt.Println("| " + strings.Join(thisHeader, " | ") + " |")
 

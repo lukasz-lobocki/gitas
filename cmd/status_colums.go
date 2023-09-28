@@ -17,7 +17,7 @@ type tColumn struct {
 }
 
 /*
-getColumns defines look and content of table's emited columns
+getColumns defines look and content of table's emitted columns
 */
 func getColumns() []tColumn {
 
@@ -212,7 +212,7 @@ const (
 )
 
 /*
-getThisAlignChar amps given alignment to apropriate markdown string to be used in header separator
+getThisAlignChar amps given alignment to appropriate markdown string to be used in header separator
 */
 func getThisAlignChar() map[int]string {
 	return map[int]string{

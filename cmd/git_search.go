@@ -16,7 +16,7 @@ import (
 /*
 getReposDictionary returns a slice of Repos found under the 'dirName'
 
-	'dirName' path to be serached
+	'dirName' path to be searched
 	'config' rules of the search
 */
 func getReposDictionary(dirName string, config tConfig) ([]tRepo, error) {
@@ -63,7 +63,7 @@ func getReposDictionary(dirName string, config tConfig) ([]tRepo, error) {
 		thisRepo.ShortName = thisRepo.TopLevelPath[strings.LastIndex(thisRepo.TopLevelPath, string(os.PathSeparator))+1:]
 		// Removing commonPrefix
 		thisRepo.UniqueName = strings.ReplaceAll(thisRepo.TopLevelPath, commonPrefix, "")
-		// Most significat segment from UniqueName
+		// Most significant segment from UniqueName
 		thisRepo.TopLevelGroup = strings.Split(thisRepo.UniqueName, string(os.PathSeparator))[0]
 
 		/* Edge case, when there is only one repo found */
