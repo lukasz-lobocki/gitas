@@ -1,10 +1,9 @@
-# gitas ![GitHub release (with filter)](https://img.shields.io/github/v/release/lukasz-lobocki/gitas?style=for-the-badge) ![GitHub](https://img.shields.io/github/license/lukasz-lobocki/gitas?style=for-the-badge)
+# gitas
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/lukasz-lobocki/gitas)](https://goreportcard.com/report/github.com/lukasz-lobocki/gitas?style=for-the-badge)
+![GitHub release (with filter)](https://img.shields.io/github/v/release/lukasz-lobocki/gitas)
+![GitHub](https://img.shields.io/github/license/lukasz-lobocki/gitas)
+[![Go Report Card](https://goreportcard.com/badge/github.com/lukasz-lobocki/gitas)](https://goreportcard.com/report/github.com/lukasz-lobocki/gitas)
 ![GitHub Workflow Status (with event)](https://img.shields.io/github/actions/workflow/status/lukasz-lobocki/gitas/main.yml)
-
-
-
 
 This tool has two features:
 
@@ -37,7 +36,7 @@ See also [markdown](samples/markdown_example.md) and [json](samples/json_example
 
 ### Flags
 
-```
+```text
   -n, --name {u|p|s}   name shown: unique|path|short (default u)
   -t, --time           time of last commit shown (default true)
   -f, --format {r|i}   format time: relative|iso (default r)
@@ -55,7 +54,7 @@ See also [markdown](samples/markdown_example.md) and [json](samples/json_example
 
 ### Flags inherited from parent commands
 
-```
+```text
       --logging int   logging level [0...3] (default 0)
 ```
 
@@ -79,13 +78,13 @@ gitas shell "ls | grep 'P'"
 
 ### Flags
 
-```
+```text
   -h, --help   help for shell
 ```
 
 ### Flags inherited from parent commands
 
-```
+```text
       --logging int   logging level [0...3] (default 0)
 ```
 
