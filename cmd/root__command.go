@@ -15,11 +15,9 @@ Version numer shown in help message. `version` is updated with `-ldflags` during
 	sem_release_ver+architecture.short_git_hash[.dirty.build_date]
 */
 var (
-	semVer, commitHash     string
-	isGitDirty, isSnapshot string
-	goOs, goArch           string
-	gitUrl, builtBranch    string
-	builtDate, builtBy     string
+	semVer     string
+	commitHash string
+	goArch     string
 )
 
 var semReleaseVersion string = semVer +

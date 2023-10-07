@@ -17,6 +17,13 @@ type tColumn struct {
 }
 
 /*
+getClickable returns linkText string that is clickable in GNOME and spawns url
+*/
+func getClickable(linkText string, url string) string {
+	return "\033]8;;" + url + "\a" + linkText + "\033]8;;\a"
+}
+
+/*
 getColumns defines look and content of table's emitted columns
 */
 func getColumns() []tColumn {
@@ -43,11 +50,11 @@ func getColumns() []tColumn {
 			contentSource: func(tc tConfig, tr tRepo) string {
 				switch tc.nameShown.Value { // Content differs by config
 				case "p":
-					return tr.TopLevelPath
+					return getClickable(tr.TopLevelPath, "file:///"+tr.TopLevelPath)
 				case "s":
-					return tr.ShortName
+					return getClickable(tr.ShortName, "file:///"+tr.TopLevelPath)
 				case "u":
-					return tr.UniqueName
+					return getClickable(tr.UniqueName, "file:///"+tr.TopLevelPath)
 				}
 				return ""
 			},
@@ -104,9 +111,10 @@ func getColumns() []tColumn {
 			titleColor: color.Bold,
 
 			contentSource: func(_ tConfig, tr tRepo) string {
-				return strings.ReplaceAll(
+				return getClickable(tr.OriginUrl, strings.ReplaceAll(tr.OriginUrl, "ssh://git@", "https://"))
+				/* return strings.ReplaceAll(
 					tr.OriginUrl, "git@github.com:", "ssh@https://github.com/", // To provide clickable text in the output
-				)
+				) */
 			},
 			contentColor:    func(_ tRepo) color.Attribute { return color.FgWhite }, // Static color
 			contentAlignMD:  ALIGN_LEFT,
