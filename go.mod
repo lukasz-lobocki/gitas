@@ -2,8 +2,6 @@ module github.com/lukasz-lobocki/gitas
 
 go 1.21.1
 
-replace github.com/lukasz-lobocki/tabby => /home/lukasz-lobocki/Code/golang/tabby/
-
 require (
 	github.com/briandowns/spinner v1.23.0
 	github.com/fatih/color v1.15.0
