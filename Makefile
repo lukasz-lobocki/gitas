@@ -13,7 +13,7 @@ build: tidy
 	goreleaser build --clean
 
 release: tidy
-	git tag "$(shell svu next)"
+	git tag "$(shell svu --always)"
 	git push --tags
 	goreleaser release --clean
 
